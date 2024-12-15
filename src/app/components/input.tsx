@@ -3,14 +3,19 @@
 import { useState } from "react";
 import Button from "./button";
 
-export default function Input({ placeholder, onButtonClick }) {
+export interface InputProps{
+    placeholder: string;
+    onButtonClick: MouseEvent;
+}
+
+export default function Input({ placeholder, onButtonClick }: InputProps) {
     const [inputValue, setInputValue] = useState("")
 
     const sendValue = () => {
         onButtonClick(inputValue); 
     };
     const handleClick = () => {
-        console.log(inputValue);
+        // console.log(inputValue);
         sendValue()
         
     };
@@ -20,11 +25,11 @@ export default function Input({ placeholder, onButtonClick }) {
         console.log(event.target.value);
     };
     return (
-        <div className="relative flex flex-1 flex-shrink-0 gap-2">
+        <div className="flex flex-row gap-2 mx-auto w-32">
             <label htmlFor="search" className="sr-only">
                 Search
             </label>
-            <input className="peer block w-full rounded-md border border-gray-200 py-[9px] px-3 text-sm outline-2 placeholder:text-gray-500 transition" placeholder={placeholder} onChange={handleChange} />
+            <input className="peer block rounded-md border w-32 border-gray-200 py-[9px] px-3 text-sm outline-2 placeholder:text-gray-500 transition" placeholder={placeholder} onChange={handleChange} />
             <Button onClick={handleClick}>Créer</Button>
         </div>
     );
