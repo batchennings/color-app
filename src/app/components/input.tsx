@@ -30,7 +30,7 @@ export default function Input({ placeholder, onButtonClick }: InputProps) {
                 Search
             </label>
             <input className="peer block rounded-md border w-32 border-gray-200 py-[9px] px-3 text-sm outline-2 placeholder:text-gray-500 transition" placeholder={placeholder} onChange={handleChange} />
-            <Button onClick={handleClick}>Créer</Button>
+            <Button onClick={handleClick} intent={"primary"} disabled={false}>Créer</Button>
         </div>
     );
 }

@@ -1,19 +1,46 @@
 "use client";
-import clsx from "clsx";
+import { cva, type VariantProps } from "class-variance-authority";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    children: React.ReactNode;
-}
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof button>;
 
-export default function Button({ children, className, ...rest }: ButtonProps) {    
+const button = cva("button transition rounded-md", {
+    variants: {
+        intent: {
+            primary: ["bg-blue-600", "text-white", "border-transparent"],
+            secondary: ["bg-white", "text-gray-800", "border-gray-400"],
+        },
+        size: {
+            small: ["text-sm", "py-1", "px-2"],
+            medium: ["text-base", "py-2", "px-4"],
+        },
+        disabled: {
+            false: null,
+            true: ["opacity-50", "cursor-not-allowed"],
+        },
+    },
+    compoundVariants: [
+        {
+            intent: "primary",
+            disabled: false,
+            class: "hover:bg-blue-700",
+        },
+        {
+            intent: "secondary",
+            disabled: false,
+            class: "hover:bg-gray-100",
+        },
+        { intent: "primary", size: "medium"},
+    ],
+    defaultVariants: {
+        disabled: false,
+        intent: "primary",
+        size: "medium",
+    },
+});
+
+export default function Button({ children, className, intent, size, disabled, ...rest }: Props) {
     return (
-        <button
-            {...rest}
-            className={clsx(
-                "flex h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50",
-                className
-            )}
-        >
+        <button {...rest} className={button({ intent, size, disabled, className })}>
             {children}
         </button>
     );
