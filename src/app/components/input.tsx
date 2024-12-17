@@ -5,7 +5,7 @@ import Button from "./button";
 
 export interface InputProps{
     placeholder: string;
-    onButtonClick: MouseEvent;
+    onButtonClick: string;
 }
 
 export default function Input({ placeholder, onButtonClick }: InputProps) {

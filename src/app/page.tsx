@@ -18,8 +18,6 @@ export default function Home() {
         <div className="font-[family-name:var(--font-geist-sans)]">
             <Input placeholder="Enter a value" onButtonClick={updatePalette}></Input>
         </div>
-        {/* <div>Color from input : {colorValue}</div> */}
-        {/* <div className="bg-black text-white font-mono p-4 transition">{palette}</div> */}
         <ColorChart data={palette}/>
         </div>
     );
