@@ -11,7 +11,7 @@ export default function Home() {
     const updatePalette = (newColor:string) => {
         setColorValue(newColor);
         const p:object = generate(newColor)
-        definePalette(p);        
+        definePalette(p);
     };
     return (
       <div className="w-[960px] flex flex-col p-8 mx-auto">
