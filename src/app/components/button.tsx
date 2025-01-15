@@ -3,8 +3,6 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof button>;
 
-con
-
 const button = cva("button transition rounded-md", {
     variants: {
         intent: {
